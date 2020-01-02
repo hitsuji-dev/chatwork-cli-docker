@@ -15,3 +15,9 @@ jobs:
         docker build . --file Dockerfile --tag ${{ secrets.DOCKER_HUB_USERNAME }}/chatwork-cli:latest
         docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_PASSWORD }}
         docker push ${{ secrets.DOCKER_HUB_USERNAME }}/chatwork-cli:latest
+
+    - uses: hitsujidev/chatwork-cli
+    - name: Notice Chatwork
+      run: |
+        export CW_API_TOKEN=${{ secrets.CHATWORK_TOKEN }}
+        cw post rooms ${{ secrets.CHATWORK_ROOMID }} messages "body=I'm hungry:("
