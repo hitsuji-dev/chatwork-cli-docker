@@ -7,5 +7,3 @@ RUN apk update && \
     git
 
 RUN go get github.com/arai-ta/chatwork-cli/cw
-
-ENTRYPOINT ["bash"]
