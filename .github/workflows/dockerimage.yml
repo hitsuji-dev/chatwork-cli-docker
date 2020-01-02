@@ -17,6 +17,5 @@ jobs:
         docker push ${{ secrets.DOCKER_HUB_USERNAME }}/chatwork-cli:latest
 
     - name: Notice Chatwork
-      run: |
-        export CW_API_TOKEN=${{ secrets.CHATWORK_TOKEN }}
-        docker run ${{ secrets.DOCKER_HUB_USERNAME }}/chatwork-cli:latest cw post rooms ${{ secrets.CHATWORK_ROOMID }} messages "body=I'm hungry:("
+      run: 
+        docker run -e CW_API_TOKEN=${{ secrets.CHATWORK_TOKEN }} ${{ secrets.DOCKER_HUB_USERNAME }}/chatwork-cli:latest cw post rooms ${{ secrets.CHATWORK_ROOMID }} messages "body=I'm hungry:("
